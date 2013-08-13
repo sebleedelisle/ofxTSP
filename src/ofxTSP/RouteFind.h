@@ -14,6 +14,7 @@ namespace ofxTSP {
 	public:
 		RouteFind(int start, int end);
 		Route solve(const Problem & problem);
+		bool hasVisited(int i, const vector<int> & visited);
 	protected:
 		void step(const Problem & problem, Route visited);
 		int start, end;

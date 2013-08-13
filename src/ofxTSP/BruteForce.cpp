@@ -1,4 +1,4 @@
-#include "ofxTSP/BruteForce.h"
+#include "BruteForce.h"
 namespace ofxTSP {
 	//---------
 	Route BruteForce::solve(const Problem & problem) {
@@ -12,7 +12,8 @@ namespace ofxTSP {
 	}
 
 	//---------
-	bool hasVisited(int i, const vector<int> & visited) {
+	
+	bool BruteForce::hasVisited(int i, const vector<int> & visited) {
 		Route::const_iterator it;
 		for (it = visited.begin(); it != visited.end(); it++) {
 			if (*it == i)
@@ -43,7 +44,8 @@ namespace ofxTSP {
 					visitBranch.push_back(i);
 					step(problem, visitBranch);
 				} else {
-					float cost = problem.getSymmetricCost(Journey(visited.back(), i));
+					Journey j(visited.back(), i);
+					float cost = problem.getSymmetricCost(j);
 					if (cost == -1)
 						continue; //no journey found
 					else {

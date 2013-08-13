@@ -15,8 +15,11 @@ namespace ofxTSP {
 	class BruteForce : public Solver {
 	public:
 		Route solve(const Problem & problem);
+		bool hasVisited(int i, const vector<int> & visited);
+	
 	protected:
 		void step(const Problem & problem, Route visited);
+	
 		map<Route , float> solutions;
 		Route bestSolution;
 	};
